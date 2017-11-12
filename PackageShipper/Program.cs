@@ -9,7 +9,7 @@ namespace PackageShipper
             Console.Write("Enter message to send: ");
             var messageToSend = Console.ReadLine();
 
-            var shippingApplication = new ShippingApplication();
+            var shippingApplication = new ShippingApplication(new PriceCalculator());
             shippingApplication.Ship(messageToSend);
         }
     }

@@ -2,17 +2,18 @@
 
 namespace PackageShipper
 {
-    internal class ShippingApplication
+    public class ShippingApplication
     {
-        public ShippingApplication()
+        private readonly ICalculator _priceCalculator;
+
+        public ShippingApplication(ICalculator priceCalculator)
         {
+            _priceCalculator = priceCalculator;
         }
 
         public void Ship(string message)
         {
-            var priceCalculator = new PriceCalculator();
-            var price = priceCalculator.Calculate(message);
-
+            var price = _priceCalculator.Calculate(message);
             Console.WriteLine($"Your shipped message cost: {price}");
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PackageShipper
 {
-    internal class PriceCalculator
+    internal class PriceCalculator : ICalculator
     {
         private readonly List<IPriceRule> _priceRules = new List<IPriceRule>();
 
