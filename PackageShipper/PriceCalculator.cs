@@ -14,7 +14,7 @@ namespace PackageShipper
 
         public int Calculate(string message)
         {
-            var price = message.Length;
+            var price = 0;
 
             foreach(var priceRule in _priceRules)
             {
