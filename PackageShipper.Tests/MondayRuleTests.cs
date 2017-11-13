@@ -7,13 +7,18 @@ namespace PackageShipper.Tests
 {
     public class MondayRuleTests
     {
-        Mock<IDateTimeProvider> dateTimeProvider = new Mock<IDateTimeProvider>();
+        private readonly Mock<IDateTimeProvider> _dateTimeProvider;
+
+        public MondayRuleTests()
+        {
+            _dateTimeProvider = new Mock<IDateTimeProvider>();
+        }
 
         [Fact]
         public void AppliesTo_WhenDayMonday_ReturnsTrue()
         {
             var mondayRule = CreateMondayRule();
-            dateTimeProvider.Setup(dtp => dtp.DayOfWeek()).Returns(DayOfWeek.Monday);
+            _dateTimeProvider.Setup(dtp => dtp.DayOfWeek()).Returns(DayOfWeek.Monday);
 
             Assert.True(mondayRule.AppliesTo(It.IsAny<string>()));
         }
@@ -22,7 +27,7 @@ namespace PackageShipper.Tests
         public void AppliesTo_WhenDayNotMonday_ReturnsFalse()
         {
             var mondayRule = CreateMondayRule();
-            dateTimeProvider.Setup(dtp => dtp.DayOfWeek()).Returns(DayOfWeek.Sunday);
+            _dateTimeProvider.Setup(dtp => dtp.DayOfWeek()).Returns(DayOfWeek.Sunday);
 
             Assert.False(mondayRule.AppliesTo(It.IsAny<string>()));
         }
@@ -36,7 +41,7 @@ namespace PackageShipper.Tests
 
         private MondayRule CreateMondayRule()
         {
-            return new MondayRule(dateTimeProvider.Object);
+            return new MondayRule(_dateTimeProvider.Object);
         }
     }
 }
