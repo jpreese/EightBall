@@ -11,9 +11,9 @@ namespace PackageShipper
             Console.Write("Enter message to send: ");
             var messageToSend = Console.ReadLine();
 
-            var shippingApplication = new ShippingApplication(new PriceCalculator(GetPriceRules()));
-
-            shippingApplication.Ship(messageToSend);
+            var priceCalculator = new PriceCalculator(GetPriceRules());
+            var price = priceCalculator.Calculate(messageToSend);
+            Console.WriteLine($"Your total cost is: {price}");
         }
 
         /* Possible to use a DI container here, or reflection */
