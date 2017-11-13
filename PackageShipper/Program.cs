@@ -19,10 +19,13 @@ namespace PackageShipper
         /* Possible to use a DI container here, or reflection */
         private static IList<IPriceRule> GetPriceRules()
         {
-            var rules = new List<IPriceRule>();
-            rules.Add(new SecretRule());
-            rules.Add(new LargeMessageRule());
-            rules.Add(new MondayRule(new DateTimeProvider()));
+            var rules = new List<IPriceRule>
+            {
+                new LargeMessageRule(),
+                new MondayRule(new DateTimeProvider()),
+                new SecretRule()
+            };
+
             return rules;
         }
     }
