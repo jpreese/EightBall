@@ -9,8 +9,10 @@ namespace PackageShipper
             Console.Write("Enter message to send: ");
             var messageToSend = Console.ReadLine();
 
-            var shippingApplication = new ShippingApplication();
-            shippingApplication.Ship(messageToSend);
+            var priceCalculator = new PriceCalculator();
+            var price = priceCalculator.Calculate(messageToSend);
+
+            Console.WriteLine($"Your calculated price is: {price}");
         }
     }
 }
