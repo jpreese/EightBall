@@ -10,13 +10,6 @@ namespace PackageShipper.Tests
         Mock<IDateTimeProvider> dateTimeProvider = new Mock<IDateTimeProvider>();
 
         [Fact]
-        public void AppliesTo_WhenDayNotMonday_ReturnsFalse()
-        {
-            var mondayRule = CreateMondayRule();
-            Assert.False(mondayRule.AppliesTo(It.IsAny<string>()));
-        }
-
-        [Fact]
         public void AppliesTo_WhenDayMonday_ReturnsTrue()
         {
             var mondayRule = CreateMondayRule();
@@ -26,12 +19,19 @@ namespace PackageShipper.Tests
         }
 
         [Fact]
-        public void AppliesTo_WhenDayNotMonday_ReturnsTrue()
+        public void AppliesTo_WhenDayNotMonday_ReturnsFalse()
         {
             var mondayRule = CreateMondayRule();
             dateTimeProvider.Setup(dtp => dtp.DayOfWeek()).Returns(DayOfWeek.Sunday);
 
             Assert.False(mondayRule.AppliesTo(It.IsAny<string>()));
+        }
+
+        [Fact]
+        public void Apply_ByDefault_Adds100()
+        {
+            var mondayRule = CreateMondayRule();
+            Assert.Equal(It.IsAny<int>() + 100, mondayRule.Apply(It.IsAny<int>()));
         }
 
         private MondayRule CreateMondayRule()
