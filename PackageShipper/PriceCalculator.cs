@@ -5,24 +5,22 @@ namespace PackageShipper
 {
     internal class PriceCalculator : ICalculator
     {
-        private readonly List<IPriceRule> _priceRules = new List<IPriceRule>();
+        private readonly IList<IPriceRule> _priceRules;
 
-        public PriceCalculator()
+        public PriceCalculator(IList<IPriceRule> priceRules)
         {
-            _priceRules.Add(new SecretRule());
-            _priceRules.Add(new LargeMessageRule());
-            _priceRules.Add(new MondayRule(new DateTimeProvider()));
+            _priceRules = priceRules;
         }
 
         public int Calculate(string message)
         {
             var price = message.Length;
 
-            foreach(var rule in _priceRules)
+            foreach(var priceRule in _priceRules)
             {
-                if(rule.AppliesTo(message))
+                if(priceRule.AppliesTo(message))
                 {
-                    price = rule.Apply(price);
+                    price = priceRule.Apply(price);
                 }
             }
 
