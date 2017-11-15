@@ -1,26 +1,27 @@
-﻿using System;
+﻿using PackageShipper.Rules;
+using System.Collections.Generic;
 
 namespace PackageShipper
 {
-    public class PriceCalculator
+    internal class PriceCalculator : ICalculator
     {
-        public int Calculate(string messageToSend)
+        private readonly IList<IPriceRule> _priceRules;
+
+        public PriceCalculator(IList<IPriceRule> priceRules)
         {
-            var price = messageToSend.Length;
+            _priceRules = priceRules;
+        }
 
-            if(messageToSend.Length >= 5)
-            {
-                price += 5;
-            }
+        public int Calculate(string message)
+        {
+            var price = message.Length;
 
-            if(DateTime.Now.DayOfWeek == DayOfWeek.Monday)
+            foreach(var priceRule in _priceRules)
             {
-                price += 100;
-            }
-
-            if(messageToSend.Contains("secret"))
-            {
-                price = 0;
+                if(priceRule.AppliesTo(message))
+                {
+                    price = priceRule.Apply(price);
+                }
             }
 
             return price;
