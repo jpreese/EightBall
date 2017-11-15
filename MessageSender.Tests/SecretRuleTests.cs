@@ -1,8 +1,8 @@
-using PackageShipper.Rules;
+using MessageSender.Rules;
 using Xunit;
 using Moq;
 
-namespace PackageShipper.Tests
+namespace MessageSender.Tests
 {
     public class SecretRuleTests
     {

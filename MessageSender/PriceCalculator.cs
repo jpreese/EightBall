@@ -1,7 +1,7 @@
-﻿using PackageShipper.Rules;
+﻿using MessageSender.Rules;
 using System.Collections.Generic;
 
-namespace PackageShipper
+namespace MessageSender
 {
     internal class PriceCalculator : ICalculator
     {

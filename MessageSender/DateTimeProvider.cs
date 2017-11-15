@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PackageShipper
+namespace MessageSender
 {
     public class DateTimeProvider : IDateTimeProvider
     {

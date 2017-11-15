@@ -1,4 +1,4 @@
-﻿namespace PackageShipper.Rules
+﻿namespace MessageSender.Rules
 {
     public class SecretRule : IPriceRule
     {

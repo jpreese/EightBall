@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PackageShipper\PackageShipper.csproj" />
+    <ProjectReference Include="..\MessageSender\MessageSender.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,8 +1,8 @@
-﻿using PackageShipper.Rules;
+﻿using MessageSender.Rules;
 using System;
 using System.Collections.Generic;
 
-namespace PackageShipper
+namespace MessageSender
 {
     class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace PackageShipper
+﻿namespace MessageSender
 {
     public interface ICalculator
     {

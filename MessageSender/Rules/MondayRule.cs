@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PackageShipper.Rules
+namespace MessageSender.Rules
 {
     public class MondayRule : IPriceRule
     {

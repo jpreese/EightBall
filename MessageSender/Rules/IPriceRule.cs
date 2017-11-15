@@ -1,4 +1,4 @@
-﻿namespace PackageShipper.Rules
+﻿namespace MessageSender.Rules
 {
     interface IPriceRule
     {

@@ -1,8 +1,8 @@
 ﻿using Moq;
-using PackageShipper.Rules;
+using MessageSender.Rules;
 using Xunit;
 
-namespace PackageShipper.Tests
+namespace MessageSender.Tests
 {
     public class LargeMessageRuleTests
     {

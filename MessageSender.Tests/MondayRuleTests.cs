@@ -1,9 +1,9 @@
 ﻿using Moq;
-using PackageShipper.Rules;
+using MessageSender.Rules;
 using System;
 using Xunit;
 
-namespace PackageShipper.Tests
+namespace MessageSender.Tests
 {
     public class MondayRuleTests
     {
